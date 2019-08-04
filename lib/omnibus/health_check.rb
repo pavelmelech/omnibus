@@ -58,6 +58,7 @@ module Omnibus
       /libpthread\.so/,
       /librt\.so/,
       /libutil\.so/,
+      /libz\.so\.1/,
     ].freeze
 
     AIX_WHITELIST_LIBS = [
