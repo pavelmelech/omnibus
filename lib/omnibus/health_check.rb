@@ -46,7 +46,7 @@ module Omnibus
       /linux-gate\.so/,
       /libz\.so\.1/,
       /libmysqlclient\.so\.20/, # mysql2 depedency
-      /mysql2\.so\.20/,         # mysql library
+      /mysql2\.so/,         # mysql library
     ].freeze
 
     ARCH_WHITELIST_LIBS = [
