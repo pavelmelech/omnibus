@@ -45,7 +45,17 @@ module Omnibus
       /linux-vdso.+/,
       /linux-gate\.so/,
       /libz\.so\.1/,
-      /libmysqlclient\.so\.20/, # mysql2 depedency
+      /libmysqlclient\.so\.+/, # mysql2 depedencies
+      /libssl\.so\.+/,
+      /libcrypto\.so\.+/,
+      /libgssapi_krb5\.so\.+/,
+      /libkrb5\.so\.+/,
+      /libcom_err\.so\.+/,
+      /libk5crypto\.so\.+/,
+      /libkrb5support\.so\.+/,
+      /libkeyutils\.so\.+/,
+      /libselinux\.so\.+/,
+      /libpcre\.so\.+/,
       /mysql2\.so/,         # mysql library
     ].freeze
 
