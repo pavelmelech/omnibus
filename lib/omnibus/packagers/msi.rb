@@ -62,10 +62,14 @@ module Omnibus
       Dir.chdir(staging_dir) do
         shellout!(heat_command)
 
+        # Add Wix Util to candle extensions
         wix_candle_extension 'WixUtilExtension'
 
         # Compile with candle.exe
         shellout!(candle_command)
+
+        # Add Wix Util to light extensions
+        wix_light_extension 'WixUtilExtension'
 
         # Create the msi, ignoring the 204 return code from light.exe since it is
         # about some expected warnings
