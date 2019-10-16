@@ -50,17 +50,19 @@ module Omnibus
       # Source for the custom action is at https://github.com/chef/fastmsi-custom-action
       # The dll will be built separately as part of the custom action build process
       # and made available as a binary for the Omnibus projects to use.
-      copy_file(resource_path("CustomActionFastMsi.CA.dll"), staging_dir) if fast_msi
+      # copy_file(resource_path("CustomActionFastMsi.CA.dll"), staging_dir) if fast_msi
     end
 
     build do
       # If fastmsi, zip up the contents of the install directory
-      shellout!(zip_command) if fast_msi
+      # shellout!(zip_command) if fast_msi
 
       # Harvest the files with heat.exe, recursively generate fragment for
       # project directory
       Dir.chdir(staging_dir) do
         shellout!(heat_command)
+
+        wix_candle_extension 'WixUtilExtension'
 
         # Compile with candle.exe
         shellout!(candle_command)
@@ -428,7 +430,7 @@ module Omnibus
     end
 
     #
-    # Get the shell command to complie the project WIX files
+    # Get the shell command to compile the project WIX files
     #
     # @return [String]
     #
