@@ -370,6 +370,14 @@ module Omnibus
           wix_install_dir: wix_install_dir,
         }
       )
+
+      # Render components.wxs.erb
+      render_template(resource_path("components.wxs.erb"),
+        destination: "#{staging_dir}/components.wxs",
+        variables: {
+          name:          project.package_name,
+        }
+      )
     end
 
     #
