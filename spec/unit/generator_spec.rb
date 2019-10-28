@@ -94,6 +94,7 @@ module Omnibus
           omnibus-name/resources/name/msi/localization-en-us.wxl.erb
           omnibus-name/resources/name/msi/parameters.wxi.erb
           omnibus-name/resources/name/msi/source.wxs.erb
+          omnibus-name/resources/name/msi/components.wxs.erb
         })
       end
     end

@@ -142,6 +142,7 @@ module Omnibus
       copy_file(resource_path("msi/localization-en-us.wxl.erb"), "#{target}/resources/#{name}/msi/localization-en-us.wxl.erb")
       copy_file(resource_path("msi/parameters.wxi.erb"), "#{target}/resources/#{name}/msi/parameters.wxi.erb")
       copy_file(resource_path("msi/source.wxs.erb"), "#{target}/resources/#{name}/msi/source.wxs.erb")
+      copy_file(resource_path("msi/components.wxs.erb"), "#{target}/resources/#{name}/msi/components.wxs.erb")
 
       copy_file(resource_path("msi/assets/LICENSE.rtf"), "#{target}/resources/#{name}/msi/assets/LICENSE.rtf")
       copy_file(resource_path("msi/assets/banner_background.bmp"), "#{target}/resources/#{name}/msi/assets/banner_background.bmp")
