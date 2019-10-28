@@ -465,6 +465,7 @@ module Omnibus
             #{wix_extension_switches(wix_candle_extensions)}
             -dProjectSourceDir="#{windows_safe_path(project.install_dir)}" "project-files.wxs"
             "#{windows_safe_path(staging_dir, 'source.wxs')}"
+            "#{windows_safe_path(staging_dir, 'components.wxs')}"
         EOH
       end
     end
