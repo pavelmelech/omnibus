@@ -495,7 +495,7 @@ module Omnibus
             #{wix_extension_switches(wix_light_extensions)}
             -cultures:en-us
             -loc "#{windows_safe_path(staging_dir, 'localization-en-us.wxl')}"
-            project-files.wixobj source.wixobj
+            project-files.wixobj source.wixobj components.wixobj
             -out "#{out_file}"
         EOH
       end
