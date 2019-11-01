@@ -91,10 +91,13 @@ module Omnibus
           omnibus-name/resources/name/msi/assets/project.ico
           omnibus-name/resources/name/msi/assets/project_16x16.ico
           omnibus-name/resources/name/msi/assets/project_32x32.ico
+          omnibus-name/resources/name/msi/assets/InstallUtils.vbs
           omnibus-name/resources/name/msi/localization-en-us.wxl.erb
           omnibus-name/resources/name/msi/parameters.wxi.erb
           omnibus-name/resources/name/msi/source.wxs.erb
           omnibus-name/resources/name/msi/components.wxs.erb
+          omnibus-name/resources/name/msi/SN_FeatureTree.wxs.erb
+          omnibus-name/resources/name/msi/SN_MidProperties.wxs.erb
         })
       end
     end
