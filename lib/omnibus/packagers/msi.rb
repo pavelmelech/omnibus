@@ -378,24 +378,6 @@ module Omnibus
           name:          project.package_name,
         }
       )
-
-      # Render SN_FeatureTree.wxs.erb
-      render_template(resource_path("SN_FeatureTree.wxs.erb"),
-        destination: "#{staging_dir}/SN_FeatureTree.wxs",
-        variables: {
-          name:          project.package_name,
-        }
-      )
-
-      # Render SN_MidProperties.wxs.erb
-      render_template(resource_path("SN_MidProperties.wxs.erb"),
-        destination: "#{staging_dir}/SN_MidProperties.wxs",
-        variables: {
-          name:          project.package_name,
-        }
-      )
-
-
     end
 
     #
@@ -484,8 +466,6 @@ module Omnibus
             -dProjectSourceDir="#{windows_safe_path(project.install_dir)}" "project-files.wxs"
             "#{windows_safe_path(staging_dir, 'source.wxs')}"
             "#{windows_safe_path(staging_dir, 'components.wxs')}"
-            "#{windows_safe_path(staging_dir, 'SN_FeatureTree.wxs')}"
-            "#{windows_safe_path(staging_dir, 'SN_MidProperties.wxs')}"
         EOH
       end
     end
@@ -516,7 +496,7 @@ module Omnibus
             #{wix_extension_switches(wix_light_extensions)}
             -cultures:en-us
             -loc "#{windows_safe_path(staging_dir, 'localization-en-us.wxl')}"
-            project-files.wixobj source.wixobj components.wixobj SN_FeatureTree.wixobj SN_MidProperties.wixobj
+            project-files.wixobj source.wixobj components.wixobj
             -out "#{out_file}"
         EOH
       end
