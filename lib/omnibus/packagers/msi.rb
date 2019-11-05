@@ -396,11 +396,8 @@ module Omnibus
                       }
       )
 
-
     end
 
-
-  end
 
     #
     # Write the bundle file into the staging directory.
