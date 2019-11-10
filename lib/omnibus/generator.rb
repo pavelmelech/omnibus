@@ -146,6 +146,7 @@ module Omnibus
       copy_file(resource_path("msi/SN_FeatureTree.wxs.erb"), "#{target}/resources/#{name}/msi/SN_FeatureTree.wxs.erb")
       copy_file(resource_path("msi/SN_MidProperties.wxs.erb"), "#{target}/resources/#{name}/msi/SN_MidProperties.wxs.erb")
       copy_file(resource_path("msi/SN_LocalUserProperties.wxs.erb"), "#{target}/resources/#{name}/msi/SN_LocalUserProperties.wxs.erb")
+      copy_file(resource_path("msi/SN_NotMatchingPasswordDlg.wxs.erb"), "#{target}/resources/#{name}/msi/SN_NotMatchingPasswordDlg.wxs.erb")
 
       copy_file(resource_path("msi/assets/LICENSE.rtf"), "#{target}/resources/#{name}/msi/assets/LICENSE.rtf")
       copy_file(resource_path("msi/assets/banner_background.bmp"), "#{target}/resources/#{name}/msi/assets/banner_background.bmp")
@@ -153,6 +154,7 @@ module Omnibus
       copy_file(resource_path("msi/assets/project.ico"), "#{target}/resources/#{name}/msi/assets/project.ico")
       copy_file(resource_path("msi/assets/project_16x16.ico"), "#{target}/resources/#{name}/msi/assets/project_16x16.ico")
       copy_file(resource_path("msi/assets/project_32x32.ico"), "#{target}/resources/#{name}/msi/assets/project_32x32.ico")
+      copy_file(resource_path("msi/assets/warning-32.ico"), "#{target}/resources/#{name}/msi/assets/warning-32.ico")
       copy_file(resource_path("msi/assets/InstallUtils.vbs"), "#{target}/resources/#{name}/msi/assets/InstallUtils.vbs")
     end
 

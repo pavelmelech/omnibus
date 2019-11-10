@@ -404,6 +404,14 @@ module Omnibus
                       }
       )
 
+      # Render SN_NotMatchingPasswordDlg.wxs.erb
+      render_template(resource_path("SN_NotMatchingPasswordDlg.wxs.erb"),
+                      destination: "#{staging_dir}/SN_NotMatchingPasswordDlg.wxs",
+                      variables: {
+                          name:          project.package_name,
+                      }
+      )
+
     end
 
 
@@ -496,6 +504,7 @@ module Omnibus
             "#{windows_safe_path(staging_dir, 'SN_FeatureTree.wxs')}"
             "#{windows_safe_path(staging_dir, 'SN_MidProperties.wxs')}"
             "#{windows_safe_path(staging_dir, 'SN_LocalUserProperties.wxs')}"
+            "#{windows_safe_path(staging_dir, 'SN_NotMatchingPasswordDlg.wxs')}"
         EOH
       end
     end
@@ -526,7 +535,7 @@ module Omnibus
             #{wix_extension_switches(wix_light_extensions)}
             -cultures:en-us
             -loc "#{windows_safe_path(staging_dir, 'localization-en-us.wxl')}"
-            project-files.wixobj source.wixobj components.wixobj SN_FeatureTree.wixobj SN_MidProperties.wixobj SN_LocalUserProperties.wixobj
+            project-files.wixobj source.wixobj components.wixobj SN_FeatureTree.wixobj SN_MidProperties.wixobj SN_LocalUserProperties.wixobj SN_NotMatchingPasswordDlg.wixobj
             -out "#{out_file}"
         EOH
       end
