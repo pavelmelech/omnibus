@@ -16,5 +16,3 @@ group :docs do
   gem "redcarpet",     "~> 2.2.2"
   gem "github-markup", "~> 0.7"
 end
-
-gem "rubyzip", "1.3.0"
