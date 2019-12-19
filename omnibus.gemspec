@@ -46,7 +46,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency "rspec-json_expectations"
   gem.add_development_dependency "rspec-its"
   gem.add_development_dependency "webmock"
-  gem.add_development_dependency "rake"
+  gem.add_development_dependency "rake",        "13.0.0"
   gem.add_development_dependency "appbundler"
   gem.add_development_dependency "pry"
 end
