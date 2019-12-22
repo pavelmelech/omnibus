@@ -628,6 +628,7 @@ EOH
       #
       # Below licenses are compiled based on https://opensource.org/licenses/alphabetical
       #
+      "EULA",          # End-User License Agreement
       "AFL-3.0",       # Academic Free License 3.0
       "AGPL-3.0",      # Affero General Public License
       "APL-1.0",       # Adaptive Public License
