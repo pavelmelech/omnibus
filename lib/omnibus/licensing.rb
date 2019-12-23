@@ -208,12 +208,12 @@ module Omnibus
         f.puts "#{project.name} #{project.build_version} license: \"#{project.license}\""
         f.puts ""
         f.puts "#{project.project_license}"
-        f.puts ""
-        f.puts project_license_content
-        f.puts ""
-        f.puts components_license_summary
-        f.puts ""
-        f.puts dependencies_license_summary
+        #f.puts ""
+        #f.puts project_license_content
+        #f.puts ""
+        #f.puts components_license_summary
+        #f.puts ""
+        #f.puts dependencies_license_summary
       end
     end
 
