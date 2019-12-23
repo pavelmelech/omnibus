@@ -206,6 +206,7 @@ module Omnibus
     def create_project_license_file
       File.open(project.license_file_path, "w") do |f|
         f.puts "#{project.name} #{project.build_version} license: \"#{project.license}\""
+        f.puts "#{project.license_content}"
         f.puts ""
         f.puts project_license_content
         f.puts ""
