@@ -242,6 +242,15 @@ module Omnibus
     end
     expose :maintainer
 
+
+    def project_license(val = NULL)
+      if null?(val)
+        @project_license || raise(MissingRequiredAttribute.new(self, :maintainer, "Chef Software, Inc."))
+      else
+        @project_license = val
+      end
+    end
+    expose :project_license
     #
     # **[Required]** Set or retrive the package homepage.
     #
