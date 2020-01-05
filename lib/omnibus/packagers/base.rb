@@ -104,6 +104,8 @@ module Omnibus
         **/.hg
         **/.svn
         **/.gitkeep
+        **/.acc-kepp
+        "#{install_dir}/embedded/lib/ruby/gems/2.4.0/cache"
       }
     end
 
