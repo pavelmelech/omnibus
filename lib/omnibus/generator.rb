@@ -144,6 +144,7 @@ module Omnibus
       copy_file(resource_path("msi/source.wxs.erb"), "#{target}/resources/#{name}/msi/source.wxs.erb")
       copy_file(resource_path("msi/components.wxs.erb"), "#{target}/resources/#{name}/msi/components.wxs.erb")
       copy_file(resource_path("msi/SN_FeatureTree.wxs.erb"), "#{target}/resources/#{name}/msi/SN_FeatureTree.wxs.erb")
+      copy_file(resource_path("msi/SN_CustomizeDlg.wxs.erb"), "#{target}/resources/#{name}/msi/SN_CustomizeDlg.wxs.erb")
       copy_file(resource_path("msi/SN_MidProperties.wxs.erb"), "#{target}/resources/#{name}/msi/SN_MidProperties.wxs.erb")
       copy_file(resource_path("msi/SN_LocalUserProperties.wxs.erb"), "#{target}/resources/#{name}/msi/SN_LocalUserProperties.wxs.erb")
       copy_file(resource_path("msi/SN_NotMatchingPasswordDlg.wxs.erb"), "#{target}/resources/#{name}/msi/SN_NotMatchingPasswordDlg.wxs.erb")
