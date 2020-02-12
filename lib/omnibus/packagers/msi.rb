@@ -388,6 +388,14 @@ module Omnibus
                       }
       )
 
+      # Render SN_CustomizeDlg.wxs.erb
+      render_template(resource_path("SN_CustomizeDlg.wxs.erb"),
+                      destination: "#{staging_dir}/SN_CustomizeDlg.wxs",
+                      variables: {
+                          name:          project.package_name,
+                      }
+      )
+
       # Render SN_MidProperties.wxs.erb
       render_template(resource_path("SN_MidProperties.wxs.erb"),
                       destination: "#{staging_dir}/SN_MidProperties.wxs",
@@ -502,6 +510,7 @@ module Omnibus
             "#{windows_safe_path(staging_dir, 'source.wxs')}"
             "#{windows_safe_path(staging_dir, 'components.wxs')}"
             "#{windows_safe_path(staging_dir, 'SN_FeatureTree.wxs')}"
+            "#{windows_safe_path(staging_dir, 'SN_CustomizeDlg.wxs')}"
             "#{windows_safe_path(staging_dir, 'SN_MidProperties.wxs')}"
             "#{windows_safe_path(staging_dir, 'SN_LocalUserProperties.wxs')}"
             "#{windows_safe_path(staging_dir, 'SN_NotMatchingPasswordDlg.wxs')}"
