@@ -380,17 +380,9 @@ module Omnibus
       )
 
 
-      # Render SN_FeatureTree.wxs.erb
-      render_template(resource_path("SN_FeatureTree.wxs.erb"),
-                      destination: "#{staging_dir}/SN_FeatureTree.wxs",
-                      variables: {
-                          name:          project.package_name,
-                      }
-      )
-
-      # Render SN_CustomizeDlg.wxs.erb
-      render_template(resource_path("SN_CustomizeDlg.wxs.erb"),
-                      destination: "#{staging_dir}/SN_CustomizeDlg.wxs",
+      # Render SN_InstallDir.wxs.erb
+      render_template(resource_path("SN_InstallDir.wxs.erb"),
+                      destination: "#{staging_dir}/SN_InstallDir.wxs",
                       variables: {
                           name:          project.package_name,
                       }
@@ -509,10 +501,9 @@ module Omnibus
             -dProjectSourceDir="#{windows_safe_path(project.install_dir)}" "project-files.wxs"
             "#{windows_safe_path(staging_dir, 'source.wxs')}"
             "#{windows_safe_path(staging_dir, 'components.wxs')}"
-            "#{windows_safe_path(staging_dir, 'SN_FeatureTree.wxs')}"
+            "#{windows_safe_path(staging_dir, 'SN_InstallDir.wxs')}"
             "#{windows_safe_path(staging_dir, 'SN_MidProperties.wxs')}"
             "#{windows_safe_path(staging_dir, 'SN_LocalUserProperties.wxs')}"
-            "#{windows_safe_path(staging_dir, 'SN_CustomizeDlg.wxs')}"
             "#{windows_safe_path(staging_dir, 'SN_NotMatchingPasswordDlg.wxs')}"
         EOH
       end
@@ -544,7 +535,7 @@ module Omnibus
             #{wix_extension_switches(wix_light_extensions)}
             -cultures:en-us
             -loc "#{windows_safe_path(staging_dir, 'localization-en-us.wxl')}"
-            project-files.wixobj source.wixobj components.wixobj SN_FeatureTree.wixobj SN_MidProperties.wixobj SN_LocalUserProperties.wixobj SN_NotMatchingPasswordDlg.wixobj SN_CustomizeDlg.wixobj
+            project-files.wixobj source.wixobj components.wixobj SN_InstallDir.wixobj SN_MidProperties.wixobj SN_LocalUserProperties.wixobj SN_NotMatchingPasswordDlg.wixobj 
             -out "#{out_file}"
         EOH
       end
