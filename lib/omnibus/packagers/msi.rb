@@ -379,6 +379,13 @@ module Omnibus
         }
       )
 
+     # Render SN_FatalError.wxs.erb
+      render_template(resource_path("SN_FatalError.wxs.erb"),
+                      destination: "#{staging_dir}/SN_FatalError.wxs",
+                      variables: {
+                          name:          project.package_name,
+                      }
+      )
 
       # Render SN_InstallDir.wxs.erb
       render_template(resource_path("SN_InstallDir.wxs.erb"),
@@ -502,6 +509,7 @@ module Omnibus
             "#{windows_safe_path(staging_dir, 'source.wxs')}"
             "#{windows_safe_path(staging_dir, 'components.wxs')}"
             "#{windows_safe_path(staging_dir, 'SN_InstallDir.wxs')}"
+            "#{windows_safe_path(staging_dir, 'SN_FatalError.wxs')}"
             "#{windows_safe_path(staging_dir, 'SN_MidProperties.wxs')}"
             "#{windows_safe_path(staging_dir, 'SN_LocalUserProperties.wxs')}"
             "#{windows_safe_path(staging_dir, 'SN_NotMatchingPasswordDlg.wxs')}"
@@ -535,7 +543,7 @@ module Omnibus
             #{wix_extension_switches(wix_light_extensions)}
             -cultures:en-us
             -loc "#{windows_safe_path(staging_dir, 'localization-en-us.wxl')}"
-            project-files.wixobj source.wixobj components.wixobj SN_InstallDir.wixobj SN_MidProperties.wixobj SN_LocalUserProperties.wixobj SN_NotMatchingPasswordDlg.wixobj 
+            project-files.wixobj source.wixobj components.wixobj SN_InstallDir.wixobj SN_MidProperties.wixobj SN_LocalUserProperties.wixobj SN_NotMatchingPasswordDlg.wixobj SN_FatalError.wixobj
             -out "#{out_file}"
         EOH
       end
