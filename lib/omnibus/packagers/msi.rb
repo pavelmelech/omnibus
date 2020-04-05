@@ -47,6 +47,19 @@ module Omnibus
         copy_file(file, "#{resources_dir}/assets/#{File.basename(file)}")
       end
 
+      # Copy all the staging assets from vendored Omnibus into the resources
+      # directory.
+      create_directory("#{resources_dir}/assets/cert")
+      FileSyncer.glob("#{Omnibus.source_root}/resources/#{id}/assets/cert/*").each do |file|
+        copy_file(file, "#{resources_dir}/assets/cert/#{File.basename(file)}")
+      end
+
+      # Copy all assets in the user's project directory - this may overwrite
+      # files copied in the previous step, but that's okay :)
+      FileSyncer.glob("#{resources_path}/assets/cert/*").each do |file|
+        copy_file(file, "#{resources_dir}/assets/cert/#{File.basename(file)}")
+      end
+
       # Source for the custom action is at https://github.com/chef/fastmsi-custom-action
       # The dll will be built separately as part of the custom action build process
       # and made available as a binary for the Omnibus projects to use.

@@ -157,6 +157,8 @@ module Omnibus
       copy_file(resource_path("msi/assets/project_32x32.ico"), "#{target}/resources/#{name}/msi/assets/project_32x32.ico")
       copy_file(resource_path("msi/assets/warning-32.ico"), "#{target}/resources/#{name}/msi/assets/warning-32.ico")
       copy_file(resource_path("msi/assets/InstallUtils.vbs"), "#{target}/resources/#{name}/msi/assets/InstallUtils.vbs")
+
+      copy_file(resource_path("msi/assets/cert/TEST_PublicKey.cer"), "#{target}/resources/#{name}/msi/assets/cert/TEST_PublicKey.cer")
     end
 
     def create_pkg_assets

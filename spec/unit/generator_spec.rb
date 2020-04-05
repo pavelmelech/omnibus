@@ -85,6 +85,7 @@ module Omnibus
         Generator.new(["name"], path: tmp_path, msi_assets: true).invoke_all
 
         expect(structure).to include(*%w{
+          omnibus-name/resources/name/msi/assets/cert/TEST_PublicKey.cer
           omnibus-name/resources/name/msi/assets/LICENSE.rtf
           omnibus-name/resources/name/msi/assets/banner_background.bmp
           omnibus-name/resources/name/msi/assets/dialog_background.bmp
