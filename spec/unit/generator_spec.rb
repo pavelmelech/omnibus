@@ -97,11 +97,12 @@ module Omnibus
           omnibus-name/resources/name/msi/parameters.wxi.erb
           omnibus-name/resources/name/msi/source.wxs.erb
           omnibus-name/resources/name/msi/components.wxs.erb
-          omnibus-name/resources/name/msi/SN_FeatureTree.wxs.erb
+          omnibus-name/resources/name/msi/SN_InstallDir.wxs.erb
           omnibus-name/resources/name/msi/SN_CustomizeDlg.wxs.erb
           omnibus-name/resources/name/msi/SN_MidProperties.wxs.erb
           omnibus-name/resources/name/msi/SN_LocalUserProperties.wxs.erb
           omnibus-name/resources/name/msi/SN_NotMatchingPasswordDlg.wxs.erb
+          omnibus-name/resources/name/msi/SN_AccConfiguration.wxs.erb
         })
       end
     end

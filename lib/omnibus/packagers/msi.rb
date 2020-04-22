@@ -419,6 +419,14 @@ module Omnibus
                       }
       )
 
+      # Render SN_AccConfiguration.wxs.erb
+      render_template(resource_path("SN_AccConfiguration.wxs.erb"),
+                      destination: "#{staging_dir}/SN_AccConfiguration.wxs",
+                      variables: {
+                          name:          project.package_name,
+                      }
+      )
+
     end
 
 
@@ -543,7 +551,7 @@ module Omnibus
             #{wix_extension_switches(wix_light_extensions)}
             -cultures:en-us
             -loc "#{windows_safe_path(staging_dir, 'localization-en-us.wxl')}"
-            project-files.wixobj source.wixobj components.wixobj SN_InstallDir.wixobj SN_MidProperties.wixobj SN_LocalUserProperties.wixobj SN_NotMatchingPasswordDlg.wixobj SN_FatalError.wixobj
+            project-files.wixobj source.wixobj components.wixobj SN_InstallDir.wixobj SN_MidProperties.wixobj SN_LocalUserProperties.wixobj SN_NotMatchingPasswordDlg.wixobj SN_FatalError.wixobj SN_AccConfiguration.wixobj
             -out "#{out_file}"
         EOH
       end
