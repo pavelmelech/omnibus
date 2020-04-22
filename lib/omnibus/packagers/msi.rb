@@ -521,6 +521,7 @@ module Omnibus
             "#{windows_safe_path(staging_dir, 'SN_MidProperties.wxs')}"
             "#{windows_safe_path(staging_dir, 'SN_LocalUserProperties.wxs')}"
             "#{windows_safe_path(staging_dir, 'SN_NotMatchingPasswordDlg.wxs')}"
+            "#{windows_safe_path(staging_dir, 'SN_AccConfiguration.wxs')}"
         EOH
       end
     end
