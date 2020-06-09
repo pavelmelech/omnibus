@@ -8,7 +8,7 @@ require "cleanroom/rspec"
 require "omnibus"
 
 def windows?
-  !!(RUBY_PLATFORM =~ /mswin|mingw|windows/)
+  !!(RUBY_PLATFORM =~ /mswin|mingw|x64-mingw32|windows/)
 end
 
 def mac?
