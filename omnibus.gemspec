@@ -35,9 +35,9 @@ Gem::Specification.new do |gem|
   gem.add_dependency "aws-sdk",          "2.11.400"
   gem.add_dependency "thor",             "~> 0.18"
   gem.add_dependency "ffi-yajl",         "~> 2.2"
-  gem.add_dependency "license_scout",    "~> 2.0"
+  gem.add_dependency "license_scout",    "~> 1.0"
 
-  gem.add_development_dependency "bundler", "2.1.4"
+  gem.add_development_dependency "bundler", "3.2.3"
   gem.add_development_dependency "artifactory", "~> 2.0"
   gem.add_development_dependency "aruba",       "~> 0.5"
   gem.add_development_dependency "chefstyle"
