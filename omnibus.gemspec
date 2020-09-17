@@ -13,7 +13,7 @@ Gem::Specification.new do |gem|
   gem.description    = gem.summary
   gem.homepage       = "https://github.com/opscode/omnibus"
 
-  gem.required_ruby_version = ">= 2.4"
+  gem.required_ruby_version = ">= 2.2"
 
   gem.files = `git ls-files`.split($/)
   gem.bindir = "bin"
@@ -36,6 +36,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency "thor",             "~> 0.18"
   gem.add_dependency "ffi-yajl",         "~> 2.2"
   gem.add_dependency "license_scout",    "~> 1.0"
+  gem.add_dependency "nio4r",            "2.5.2"
 
   gem.add_development_dependency "bundler", "3.2.3"
   gem.add_development_dependency "artifactory", "~> 2.0"
