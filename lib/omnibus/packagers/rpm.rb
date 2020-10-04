@@ -1,5 +1,5 @@
 #
-# Copyright 2014 Chef Software, Inc.
+# Copyright 2014-2018 Chef Software, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,18 +21,18 @@ module Omnibus
     # @return [Hash]
     SCRIPT_MAP = {
       # Default Omnibus naming
-      preinst:  "pre",
+      preinst: "pre",
       postinst: "post",
-      prerm:    "preun",
-      postrm:   "postun",
+      prerm: "preun",
+      postrm: "postun",
       # Default RPM naming
-      pre:          "pre",
-      post:         "post",
-      preun:        "preun",
-      postun:       "postun",
+      pre: "pre",
+      post: "post",
+      preun: "preun",
+      postun: "postun",
       verifyscript: "verifyscript",
-      pretans:      "pretans",
-      posttrans:    "posttrans",
+      pretrans: "pretrans",
+      posttrans: "posttrans",
     }.freeze
 
     id :rpm
@@ -243,7 +243,7 @@ module Omnibus
       if null?(val)
         @compression_type || :gzip
       else
-        unless val.is_a?(Symbol) && [:gzip, :bzip2, :xz].member?(val)
+        unless val.is_a?(Symbol) && %i{gzip bzip2 xz}.member?(val)
           raise InvalidValue.new(:compression_type, "be a Symbol (:gzip, :bzip2, or :xz)")
         end
 
@@ -317,7 +317,7 @@ module Omnibus
     # @return [Array]
     #
     def filesystem_directories
-      @filesystem_directories ||= IO.readlines(resource_path("filesystem_list")).map { |f| f.chomp }
+      @filesystem_directories ||= IO.readlines(resource_path("filesystem_list")).map(&:chomp)
     end
 
     #
@@ -328,11 +328,11 @@ module Omnibus
     #
     def mark_filesystem_directories(fsdir)
       if fsdir.eql?("/") || fsdir.eql?("/usr/lib") || fsdir.eql?("/usr/share/empty")
-        return "%dir %attr(0555,root,root) #{fsdir}"
+        "%dir %attr(0555,root,root) #{fsdir}"
       elsif filesystem_directories.include?(fsdir)
-        return "%dir %attr(0755,root,root) #{fsdir}"
+        "%dir %attr(0755,root,root) #{fsdir}"
       else
-        return "%dir #{fsdir}"
+        "%dir #{fsdir}"
       end
     end
 
@@ -356,35 +356,34 @@ module Omnibus
 
       # Get a list of all files
       files = FileSyncer.glob("#{build_dir}/**/*")
-                .map { |path| build_filepath(path) }
+        .map { |path| build_filepath(path) }
 
       render_template(resource_path("spec.erb"),
         destination: spec_file,
         variables: {
-          name:            safe_base_package_name,
-          version:         safe_version,
-          iteration:       safe_build_iteration,
-          vendor:          vendor,
-          license:         license,
-          dist_tag:        dist_tag,
-          maintainer:      project.maintainer,
-          homepage:        project.homepage,
-          description:     project.description,
-          priority:        priority,
-          category:        category,
-          conflicts:       project.conflicts,
-          replaces:        project.replaces,
-          dependencies:    project.runtime_dependencies,
-          user:            project.package_user,
-          group:           project.package_group,
-          scripts:         scripts,
-          config_files:    config_files,
-          files:           files,
-          build_dir:       build_dir,
+          name: safe_base_package_name,
+          version: safe_version,
+          iteration: safe_build_iteration,
+          vendor: vendor,
+          license: license,
+          dist_tag: dist_tag,
+          maintainer: project.maintainer,
+          homepage: project.homepage,
+          description: project.description,
+          priority: priority,
+          category: category,
+          conflicts: project.conflicts,
+          replaces: project.replaces,
+          dependencies: project.runtime_dependencies,
+          user: project.package_user,
+          group: project.package_group,
+          scripts: scripts,
+          config_files: config_files,
+          files: files,
+          build_dir: build_dir,
           platform_family: Ohai["platform_family"],
-          compression:     compression,
-        }
-      )
+          compression: compression,
+        })
     end
 
     #
@@ -422,8 +421,8 @@ module Omnibus
       if signing_passphrase
         log.info(log_key) { "Signing enabled for .rpm file" }
 
-        if File.exist?("#{ENV['HOME']}/.rpmmacros")
-          log.info(log_key) { "Detected .rpmmacros file at `#{ENV['HOME']}'" }
+        if File.exist?("#{ENV["HOME"]}/.rpmmacros")
+          log.info(log_key) { "Detected .rpmmacros file at `#{ENV["HOME"]}'" }
           home = ENV["HOME"]
         else
           log.info(log_key) { "Using default .rpmmacros file from Omnibus" }
@@ -435,9 +434,8 @@ module Omnibus
             destination: "#{home}/.rpmmacros",
             variables: {
               gpg_name: project.maintainer,
-              gpg_path: "#{ENV['HOME']}/.gnupg", # TODO: Make this configurable
-            }
-          )
+              gpg_path: "#{ENV["HOME"]}/.gnupg", # TODO: Make this configurable
+            })
         end
 
         command << " --sign"
@@ -466,11 +464,13 @@ module Omnibus
     def build_filepath(path)
       filepath = rpm_safe("/" + path.gsub("#{build_dir}/", ""))
       return if config_files.include?(filepath)
+
       full_path = build_dir + filepath.gsub("[%]", "%")
       # FileSyncer.glob quotes pathnames that contain spaces, which is a problem on el7
       full_path.delete!('"')
       # Mark directories with the %dir directive to prevent rpmbuild from counting their contents twice.
       return mark_filesystem_directories(filepath) if !File.symlink?(full_path) && File.directory?(full_path)
+
       filepath
     end
 
@@ -502,8 +502,7 @@ module Omnibus
         mode: 0700,
         variables: {
           passphrase: signing_passphrase,
-        }
-      )
+        })
 
       # Yield the destination to the block
       yield(destination)
@@ -583,7 +582,7 @@ module Omnibus
       #
       if version =~ /\-/
         if Ohai["platform_family"] == "wrlinux"
-          converted = version.tr("-", "_") #WRL has an elderly RPM version
+          converted = version.tr("-", "_") # WRL has an elderly RPM version
           log.warn(log_key) do
             "Omnibus replaces dashes (-) with tildes (~) so pre-release " \
             "versions get sorted earlier than final versions.  However, the " \
@@ -630,6 +629,8 @@ module Omnibus
       case Ohai["kernel"]["machine"]
       when "i686"
         "i386"
+      when "armv7l" # raspberry pi 3 CentOS
+        "armv7hl"
       when "armv6l"
         if Ohai["platform"] == "pidora"
           "armv6hl"
@@ -642,3 +643,4 @@ module Omnibus
     end
   end
 end
+
