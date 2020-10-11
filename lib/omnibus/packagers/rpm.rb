@@ -469,7 +469,7 @@ module Omnibus
       # FileSyncer.glob quotes pathnames that contain spaces, which is a problem on el7
       full_path.delete!('"')
       # Mark directories with the %dir directive to prevent rpmbuild from counting their contents twice.
-      return mark_filesystem_directories(filepath) if !File.symlink?(full_path) && File.directory?(full_path)
+      #return mark_filesystem_directories(filepath) if !File.symlink?(full_path) && File.directory?(full_path)
 
       filepath
     end
